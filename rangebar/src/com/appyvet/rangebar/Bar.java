@@ -43,27 +43,31 @@ public class Bar {
 
     private final float mTickHeight;
 
+    private int mDrawEveryNthTick = -1;
+
     // Constructor /////////////////////////////////////////////////////////////
 
 
     /**
      * Bar constructor
      *
-     * @param ctx          the context
-     * @param x            the start x co-ordinate
-     * @param y            the y co-ordinate
-     * @param length       the length of the bar in px
-     * @param tickCount    the number of ticks on the bar
-     * @param tickHeightDP the height of each tick
-     * @param tickColor    the color of each tick
-     * @param barWeight    the weight of the bar
-     * @param barColor     the color of the bar
+     * @param ctx              the context
+     * @param x                the start x co-ordinate
+     * @param y                the y co-ordinate
+     * @param length           the length of the bar in px
+     * @param tickCount        the number of ticks on the bar
+     * @param drawEveryNthTick the N value to draw only every N'th tick, not all of them
+     * @param tickHeightDP     the height of each tick
+     * @param tickColor        the color of each tick
+     * @param barWeight        the weight of the bar
+     * @param barColor         the color of the bar
      */
     public Bar(Context ctx,
             float x,
             float y,
             float length,
             int tickCount,
+            int drawEveryNthTick,
             float tickHeightDP,
             int tickColor,
             float barWeight,
@@ -74,6 +78,7 @@ public class Bar {
         mY = y;
 
         mNumSegments = tickCount - 1;
+        mDrawEveryNthTick = drawEveryNthTick;
         mTickDistance = length / mNumSegments;
         mTickHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 tickHeightDP,
@@ -171,6 +176,10 @@ public class Bar {
 
         // Loop through and draw each tick (except final tick).
         for (int i = 0; i < mNumSegments; i++) {
+            if (mDrawEveryNthTick != -1 && (i % mDrawEveryNthTick) != 0) {
+                continue;
+            }
+
             final float x = i * mTickDistance + mLeftX;
             canvas.drawCircle(x, mY, mTickHeight, mTickPaint);
         }

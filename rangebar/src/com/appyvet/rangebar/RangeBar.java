@@ -133,6 +133,8 @@ public class RangeBar extends View {
 
     private int mDefaultHeight = 150;
 
+    private int mDrawEveryNthTick = -1;
+
     private int mTickCount = (int) ((mTickEnd - mTickStart) / mTickInterval) + 1;
 
     private PinView mLeftThumb;
@@ -319,7 +321,7 @@ public class RangeBar extends View {
         final float marginLeft = mExpandedPinRadius;
 
         final float barLength = w - (2 * marginLeft);
-        mBar = new Bar(ctx, marginLeft, yPos, barLength, mTickCount, mTickHeightDP, mTickColor,
+        mBar = new Bar(ctx, marginLeft, yPos, barLength, mTickCount, mDrawEveryNthTick, mTickHeightDP, mTickColor,
                 mBarWeight, mBarColor);
 
         // Initialize thumbs to the desired indices
@@ -896,6 +898,16 @@ public class RangeBar extends View {
         super.setEnabled(enabled);
     }
 
+    /**
+     * Set's the param to only draw every N'th tick, now all of them.<br />
+     *
+     * Default is -1 which results in all ticks being drawn.
+     *
+     * @param drawEveryNth only draw tick if it's position is a multiple of given number
+     */
+    public void setTickSkipDrawEvery(int drawEveryNth) {
+        mDrawEveryNthTick = drawEveryNth;
+    }
 
     // Private Methods /////////////////////////////////////////////////////////
 
@@ -992,6 +1004,7 @@ public class RangeBar extends View {
                 getYPos(),
                 getBarLength(),
                 mTickCount,
+                mDrawEveryNthTick,
                 mTickHeightDP,
                 mTickColor,
                 mBarWeight,
