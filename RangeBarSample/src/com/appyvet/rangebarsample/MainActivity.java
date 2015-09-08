@@ -78,6 +78,8 @@ public class MainActivity extends Activity implements
         // Gets the RangeBar
         rangebar = (RangeBar) findViewById(R.id.rangebar1);
 
+        rangebar.setTickSkipDrawEvery(3);
+
         rangeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
