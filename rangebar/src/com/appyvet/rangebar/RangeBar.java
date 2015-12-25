@@ -877,6 +877,36 @@ public class RangeBar extends View {
         return mTickInterval;
     }
 
+
+    public String getLeftValue() {
+        return getPinValue(mLeftIndex);
+    }
+
+    public String getRightValue() {
+        return getPinValue(mRightIndex);
+    }
+
+    /**
+     * Set the value on the thumb pin, either from map or calculated from the tick intervals
+     * Integer check to format decimals as whole numbers
+     *
+     * @param tickIndex the index to set the value for
+     */
+    protected String getPinValueByIndex(int tickIndex) {
+        float tickValue = (tickIndex == (mTickCount - 1))
+                ? mTickEnd
+                : (tickIndex * mTickInterval) + mTickStart;
+        String xValue = mTickMap.get(tickValue);
+        if (xValue == null) {
+            if (tickValue == Math.ceil(tickValue)) {
+                xValue = String.valueOf((int) tickValue);
+            } else {
+                xValue = String.valueOf(tickValue);
+            }
+        }
+        return xValue;
+    }
+
     @Override
     public void setEnabled(boolean enabled){
         if(!enabled) {
@@ -1289,7 +1319,7 @@ public class RangeBar extends View {
      *
      * @param tickIndex the index to set the value for
      */
-    private String getPinValue(int tickIndex) {
+    protected String getPinValue(int tickIndex) {
         float tickValue = (tickIndex == (mTickCount - 1))
                             ? mTickEnd
                             : (tickIndex * mTickInterval) + mTickStart;
