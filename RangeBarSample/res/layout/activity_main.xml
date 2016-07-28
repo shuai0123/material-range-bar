@@ -25,9 +25,9 @@
             android:id="@+id/rangebar1"
             android:layout_width="match_parent"
             android:layout_height="72dp"
-            custom:tickStart="5"
-            custom:tickInterval="1"
-            custom:tickEnd="10"
+            custom:mrb_tickStart="5"
+            custom:mrb_tickInterval="1"
+            custom:mrb_tickEnd="10"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"/>
 

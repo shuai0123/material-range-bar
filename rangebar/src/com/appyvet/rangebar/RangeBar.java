@@ -960,11 +960,11 @@ public class RangeBar extends View {
             // Sets the values of the user-defined attributes based on the XML
             // attributes.
             final float tickStart = ta
-                    .getFloat(R.styleable.RangeBar_tickStart, DEFAULT_TICK_START);
+                    .getFloat(R.styleable.RangeBar_mrb_tickStart, DEFAULT_TICK_START);
             final float tickEnd = ta
-                    .getFloat(R.styleable.RangeBar_tickEnd, DEFAULT_TICK_END);
+                    .getFloat(R.styleable.RangeBar_mrb_tickEnd, DEFAULT_TICK_END);
             final float tickInterval = ta
-                    .getFloat(R.styleable.RangeBar_tickInterval, DEFAULT_TICK_INTERVAL);
+                    .getFloat(R.styleable.RangeBar_mrb_tickInterval, DEFAULT_TICK_INTERVAL);
             int tickCount = (int) ((tickEnd - tickStart) / tickInterval) + 1;
             if (isValidTickCount(tickCount)) {
 
@@ -989,35 +989,35 @@ public class RangeBar extends View {
             }
 
             mTickHeightDP = ta
-                    .getDimension(R.styleable.RangeBar_tickHeight, DEFAULT_TICK_HEIGHT_DP);
-            mBarWeight = ta.getDimension(R.styleable.RangeBar_barWeight, DEFAULT_BAR_WEIGHT_PX);
-            mBarColor = ta.getColor(R.styleable.RangeBar_barColor, DEFAULT_BAR_COLOR);
-            mTextColor = ta.getColor(R.styleable.RangeBar_textColor, DEFAULT_TEXT_COLOR);
-            mPinColor = ta.getColor(R.styleable.RangeBar_pinColor, DEFAULT_PIN_COLOR);
+                    .getDimension(R.styleable.RangeBar_mrb_tickHeight, DEFAULT_TICK_HEIGHT_DP);
+            mBarWeight = ta.getDimension(R.styleable.RangeBar_mrb_barWeight, DEFAULT_BAR_WEIGHT_PX);
+            mBarColor = ta.getColor(R.styleable.RangeBar_mrb_barColor, DEFAULT_BAR_COLOR);
+            mTextColor = ta.getColor(R.styleable.RangeBar_mrb_textColor, DEFAULT_TEXT_COLOR);
+            mPinColor = ta.getColor(R.styleable.RangeBar_mrb_pinColor, DEFAULT_PIN_COLOR);
             mActiveBarColor = mBarColor;
             mCircleSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                    ta.getDimension(R.styleable.RangeBar_selectorSize, DEFAULT_CIRCLE_SIZE_DP),
+                    ta.getDimension(R.styleable.RangeBar_mrb_selectorSize, DEFAULT_CIRCLE_SIZE_DP),
                     getResources().getDisplayMetrics());
-            mCircleColor = ta.getColor(R.styleable.RangeBar_selectorColor,
+            mCircleColor = ta.getColor(R.styleable.RangeBar_mrb_selectorColor,
                     DEFAULT_CONNECTING_LINE_COLOR);
             mActiveCircleColor = mCircleColor;
-            mTickColor = ta.getColor(R.styleable.RangeBar_tickColor, DEFAULT_TICK_COLOR);
+            mTickColor = ta.getColor(R.styleable.RangeBar_mrb_tickColor, DEFAULT_TICK_COLOR);
             mActiveTickColor = mTickColor;
-            mConnectingLineWeight = ta.getDimension(R.styleable.RangeBar_connectingLineWeight,
+            mConnectingLineWeight = ta.getDimension(R.styleable.RangeBar_mrb_connectingLineWeight,
                     DEFAULT_CONNECTING_LINE_WEIGHT_PX);
-            mConnectingLineColor = ta.getColor(R.styleable.RangeBar_connectingLineColor,
+            mConnectingLineColor = ta.getColor(R.styleable.RangeBar_mrb_connectingLineColor,
                     DEFAULT_CONNECTING_LINE_COLOR);
             mActiveConnectingLineColor = mConnectingLineColor;
             mExpandedPinRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                    ta.getDimension(R.styleable.RangeBar_pinRadius,
+                    ta.getDimension(R.styleable.RangeBar_mrb_pinRadius,
                             DEFAULT_EXPANDED_PIN_RADIUS_DP), getResources().getDisplayMetrics());
             mPinPadding = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                    ta.getDimension(R.styleable.RangeBar_pinPadding,
+                    ta.getDimension(R.styleable.RangeBar_mrb_pinPadding,
                             DEFAULT_PIN_PADDING_DP), getResources().getDisplayMetrics());
             mBarPaddingBottom = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                    ta.getDimension(R.styleable.RangeBar_barPaddingBottom,
+                    ta.getDimension(R.styleable.RangeBar_mrb_barPaddingBottom,
                             DEFAULT_BAR_PADDING_BOTTOM_DP), getResources().getDisplayMetrics());
-            mIsRangeBar = ta.getBoolean(R.styleable.RangeBar_rangeBar, true);
+            mIsRangeBar = ta.getBoolean(R.styleable.RangeBar_mrb_rangeBar, true);
 
         } finally {
             ta.recycle();
